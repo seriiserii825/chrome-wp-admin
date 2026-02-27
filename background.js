@@ -1,11 +1,11 @@
-const ADMIN_PATHS = ['/wp-admin', '/login', '/gestione'];
+const ADMIN_PATHS = ["/gestione", "/login", "/wp-admin"];
 
 async function checkUrl(url) {
   try {
     const response = await fetch(url, {
-      method: 'HEAD',
-      redirect: 'follow',
-      cache: 'no-store',
+      method: "HEAD",
+      redirect: "follow",
+      cache: "no-store",
     });
     // 404 = not found, 5xx = server error → skip; everything else counts as "exists"
     return response.status !== 404 && response.status < 500;
@@ -31,10 +31,10 @@ async function navigateToAdmin(tab) {
 }
 
 chrome.commands.onCommand.addListener(async (command) => {
-  if (command !== 'open-admin') return;
+  if (command !== "open-admin") return;
 
   const [tab] = await chrome.tabs.query({ active: true, currentWindow: true });
-  if (!tab?.url?.startsWith('http')) return; // ignore chrome:// etc.
+  if (!tab?.url?.startsWith("http")) return; // ignore chrome:// etc.
 
   await navigateToAdmin(tab);
 });
