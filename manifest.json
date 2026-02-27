@@ -1,0 +1,20 @@
+{
+  "manifest_version": 3,
+  "name": "WP Admin Quick Access",
+  "version": "1.0",
+  "description": "Press Alt+Shift+A to navigate to the admin panel (/wp-admin → /login → /gestione)",
+  "permissions": ["tabs", "activeTab"],
+  "host_permissions": ["<all_urls>"],
+  "background": {
+    "service_worker": "background.js"
+  },
+  "commands": {
+    "open-admin": {
+      "suggested_key": {
+        "default": "Alt+Shift+A",
+        "mac": "MacCtrl+Shift+A"
+      },
+      "description": "Open admin panel"
+    }
+  }
+}
